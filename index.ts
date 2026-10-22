@@ -53,4 +53,6 @@ async function main() {
 }
 
 // Run the script
-main().catch(console.error)
+if (process.env.NODE_ENV !== "test" && typeof Bun?.argv?.[1] === "string" && Bun.argv[1].endsWith("index.ts")) {
+  main().catch(console.error)
+}
